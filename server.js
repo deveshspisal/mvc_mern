@@ -15,6 +15,10 @@ app.use(express.json())
 const dbConfig = require('./config/db')
 dbConfig()
 
+const userCltr = require('./app/controllers/user-controller')
+
+app.post('/user-login',userCltr.login)
+
 
 // Route Category
 
