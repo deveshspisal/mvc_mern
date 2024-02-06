@@ -24,7 +24,10 @@ app.post('/user-login',userCltr.login)
 
 const categoryCltr = require('./app/controllers/category-controller')
 
-app.get('/get-categories',categoryCltr.list)
+// Routing level middleware
+const usetAuth = require('./app/middleware/auth')
+
+app.get('/get-categories',usetAuth,categoryCltr.list)
 app.post('/create-categories',categoryCltr.create)
 app.put('/update-category/:id',categoryCltr.update)
 app.delete('/delete-category/:id',categoryCltr.delete)
